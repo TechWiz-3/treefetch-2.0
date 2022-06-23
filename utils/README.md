@@ -1,6 +1,6 @@
 Utilities written in python which return information regardless of the host system
 
-[**`******get_os`](.get_os)
+[`get_os`](./get_os)
  CLI utility that returns to the command line two lines, the first being the os name of the host the second being the os version in the format:  
 ```
 OS: <os>
