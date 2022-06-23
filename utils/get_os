@@ -1,10 +1,23 @@
 #!/usr/bin/env python3
 
+# Author: Zac the Wise
+# License: GPL-V3.0
 # CLI utility that returns to the command line
-# a three element tuple,
-# the first element being 'success' or 'error'
-# the lower case os name
-# 
+# two lines, the first being the os name of the host
+# the second being the os version in the format
+
+# OS: <os>
+# Ver: <os_ver>
+
+# The --env option can be used if you want to customise
+# the output of the program.
+# To do this set OS and OS_VER environment variables
+
+# To retrieve ONLY the OS or ONLY the version without the heading text
+# ./get_os | awk 'NR==1 {print $2 " " $3 " " $4}'
+# ./get_os | awk 'NR==2 {print $2 " " $3 " " $4}'
+# or both...
+# ./get_os | awk '{print $2 " " $3 " " $4}'
 
 from os import environ
 from os import uname
