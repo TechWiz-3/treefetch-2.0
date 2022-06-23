@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+
+# CLI utility that returns to the command line
+# a three element tuple,
+# the first element being 'success' or 'error'
+# the lower case os name
+# 
+
+from os import environ
+from os import uname
+from platform import system
+from sys import argv
+from re import compile
+
+DISTRO_NAME_RE = compile('^PRETTY_NAME="([^"]+)"$')  # copied from pythonfetch
+
+def get_os(use_env = False):
+    """"Returns 3 items in a tuple
+    'success' or 'error'
+    os type
+    os version"""
+    if use_env:
+        try:
+            op_sys = environ["OS"].lower()
+            op_ver = environ["OS_VER"].lower()
+        except KeyError:  # if the variable is not set
+            return "error", "You are using the --env option, which looks for environment variables instead of system checks.\nPlease set the OS and OS_VER variables in your ~/.bash_profile with the syntax export OS=\"custom os name\"", None
+        else:
+            return "success", op_sys, op_ver
+    else: 
+        # a lot of the methods used here I learnt directly from pythonfetch
+        # https://github.com/beucismis/pythonfetch
+        os_type = system()
+        # if the host os is windows
+        if os_type == "Windows":
+            op_sys = "windows"
+            op_ver = platform.version()
+            return "success", op_sys, op_ver
+        # if the host os is mac
+        elif os_type == "Darwin":
+            from platform import mac_ver
+            version = mac_ver()[0]
+            return "success", "mac os x", version
+        elif os_type == "Linux":
+            op_sys = get_linux_os_name().lower()
+            op_ver = uname().release
+
+def get_linux_os_name():
+    # copied from pythonfetch
+    # https://github.com/beucismis/pythonfetch
+    for p in Path("/").glob("etc/*release"):
+        with p.open() as file:
+            match = [DISTRO_NAME_RE.match(l) for l in file.readlines()][0]
+
+        if match:
+            return match.group(1) if match.group(1) != "" or None else SPACE
+
+if __name__ == "__main__":
+    try:
+        arg_a = argv[1]
+    except IndexError:
+        # no options used
+        status,os,ver = get_os()
+    else:
+        # options used
+        if argv[1] == "--env":  # env option used
+            status,os,ver = get_os(use_env = True)
+        else:  # no env option used
+            status,os,ver = get_os()
+    if status == "success":
+        print(f"OS: {os}\nVer: {ver}")
+    else:
+        print(f"Error occured {os}")  # os is used as the error message
