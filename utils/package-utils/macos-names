@@ -1,0 +1,17 @@
+#!/bin/bash
+
+mac_os_managers=("brew" "port")
+used_managers=()
+
+for manager in "${mac_os_managers[@]}"
+do
+    if [ $(command -v ${manager} &> /dev/null) -n ]
+    then
+        used_managers+=" ${manager}"
+    fi
+done
+
+for manager in ${used_managers[@]}
+do
+     echo "$manager"
+done
