@@ -24,7 +24,7 @@ from os import uname
 from platform import system
 from sys import argv
 from re import compile
-from pathlib import path
+from pathlib import PATH
 
 DISTRO_NAME_RE = compile('^PRETTY_NAME="([^"]+)"$')  # copied from pythonfetch
 
