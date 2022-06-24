@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+
+# Author: Zac the Wise
+# License: GPL-v3.0
+# CLI utility that returns to the command line
+# the name of the window manager that is being used
+
+# Lists of window managers and related info was obtained from neofetch
+# https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L1892
+
+from platform import system
+import psutil
+
+def get_wm(use_env = False):
+    """Returns the WM or an error"""
+    if use_env:  # look for a WM env variable
+        from os import environ
+        env_list = ["WM", "wm", "WINDOW_MANAGER", "window_manager"]
+        # look for any env variables with the above names
+        for env_var_name in env_list:
+            try:
+                wm = environ[env_var_name]
+            except KeyError:  # if the variable isn't found
+                pass
+            else:
+                return wm.lower()
+        else:
+            return "error, no env variable with name wm, WM, WINDOW_MANAGER or window_manager found"
+    else:
+        os = system()
+        if os == "Darwin":  # refers to mac os
+            wms = [
+                "amethyst", "spectacle",
+                "kwm", "chunkwm",
+                "yabai", "rectangle"
+            ]
+            wm = get_processes(wms)
+            if wm in wms:
+                return wm
+            return "quartz compositor"  # default mac wm
+        elif os == "Windows":
+            wms = []
+        elif os == "Linux":
+            wms = [
+                "arcan", "asc",
+                "clayland", "dwc",
+                "fireplace", "gnome-shell",
+                "greenfield", "grefsen",
+                "hikari", "kwin",
+                "lipstick", "maynard",
+                "mazecompositor", "motorcar",
+                "orbital", "orbment",
+                "perceptia", "river",
+                "rustland", "sway",
+                "ulubis", "velox",
+                "wavy", "wavy-cooler",
+                "wayfire", "wayhouse",
+                "westeros", "westford",
+                "weston", "sowm",
+                "catwm", "fvwm",
+                "dwm", "2bwm"
+            ]
+
+
+def get_processes(known_managers):
+    """Loops through computer's processes until an item from the
+    provided knowm_managers list is detected and return with it's name"""
+    # https://thispointer.com/python-check-if-a-process-is-running-by-name-and-find-its-process-id-pid/
+    for process in psutil.process_iter():
+        try:
+            if process.name().lower() in known_managers:
+                return process.name().lower()
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            # error occured with the process and we can ignore it
+            pass
+
+
+if __name__ == "__main__":
+    print(get_wm(use_env = True))
