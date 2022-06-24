@@ -1,5 +1,9 @@
 ## :pray: Ways you can help
 
+**In general:**
+* Test treefetch on your system, report any issues, PR any changes you wish to make.
+* Take a look at the [utilities](./utils) and help improve them with a PR or suggest something in an issue.
+
 [**`get_desktop`**](./utils/get_desktop)
 * Test the utility and help improve it to include more desktop managers and improve it's accuracy
 * Work on other methods to get the desktop environment if `XDG_CURRENT_DESKTOP` env variable does not exist
