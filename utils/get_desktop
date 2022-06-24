@@ -12,6 +12,7 @@ from os import environ
 
 
 def get_de():
+    """returns the desktop environment or an error"""
     os = system()
 
     if os == "Windows":
@@ -21,7 +22,7 @@ def get_de():
             return "metro"
         # else
         return "aero"
-    elif os == "Mac":
+    elif os == "Darwin":  # refers to mac
         return "aqua"
     elif os == "Linux":
         # returns a string with list items seperated with colons
@@ -42,3 +43,9 @@ def get_de():
             for desktop in recognised_desktops:
                 if desktop in desktops_env.lower():
                     return desktop
+            # if the function hasn't returned already
+            return "de not recognised"
+
+
+if __name__ == "__main__":
+    print(get_de())
