@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+
+from platform import system
+from platform import release
+from os import environ
+
+# helpful info from neofetch's get_de function on line 1771
+# https://github.com/dylanaraps/neofetch/blob/master/neofetch
+
+# more info
+# https://superuser.com/questions/1074068/what-is-the-difference-between-desktop-session-xdg-session-desktop-and-xdg-cur
+
+
+def get_de():
+    os = system()
+
+    if os == "Windows":
+        if release() == 10:
+            return "fluent"
+        if release() == 8:
+            return "metro"
+        # else
+        return "aero"
+    elif os == "Mac":
+        return "aqua"
+    elif os == "Linux":
+        # returns a string with list items seperated with colons
+        try:
+            desktops_env = environ["XDG_CURRENT_DESKTOP"]
+        except KeyError:
+            # this means the variable isn't set
+            return "XDG_CURRENT_DESKTOP env not found"
+        else:
+            recognised_desktops = [
+                "gnome", "plasma",
+                "mate", "xfce",
+                "cinnamon", "deepin",
+                "budgie", "lxqt",
+                "lumina", "trinity",
+                "unity"
+            ]
+            for desktop in recognised_desktops:
+                if desktop in desktops_env.lower():
+                    return desktop
