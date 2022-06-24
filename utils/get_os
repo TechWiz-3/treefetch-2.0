@@ -56,21 +56,18 @@ def get_os(use_env = False):
             version = mac_ver()[0]
             return "success", "mac os x", version
         elif os_type == "Linux":
-            op_sys = get_linux_os_name()
-            op_ver = uname().release
+            op_sys, op_ver = get_linux_os()
+            # op_ver = uname().release - this actually gets kernel info
             return "success", op_sys, op_ver
         # else
         return "error", "os not recognised, please open an issue :)"
 
-def get_linux_os_name():
-    # copied from pythonfetch
-    # https://github.com/beucismis/pythonfetch
-    for p in Path("/").glob("etc/*release"):
-        with p.open() as file:
-            match = [DISTRO_NAME_RE.match(l) for l in file.readlines()][0]
-
-        if match:
-            return match.group(1) if match.group(1) != "" or None else SPACE
+def get_linux_os():
+    # inspired by the original tfetch (use of the distro library)
+    from distro import name, version
+    name = name()
+    version = version()
+    return name, version
 
 if __name__ == "__main__":
     try:
