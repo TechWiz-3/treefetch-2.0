@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+
+# Author: Zac the Wise
+# License: GPL-v3.0
+# CLI utility that returns to the command line
+# the number of installed packages on a system
+# using common package managers
+
+from platform import system
+from os import system as run
+from subprocess import run, PIPE
+from sys import argv
+
+
+def get_pkgs():
+    os_type = system()
+
+    if os_type == "Darwin":
+        # package managers: brew, port
+        # from the original tfetch
+        try:
+            output = run(
+                ["./utils/package-utils/macos", ""],
+                text=True,
+                stdout=PIPE,
+                stderr=PIPE
+            )
+        except FileNotFoundError:
+            output = run(
+                ["./package-utils/macos", ""],
+                text=True,
+                stdout=PIPE,
+                stderr=PIPE
+            )
+            print(output.stdout.replace("\n", ""))
+        else:
+            print(output.stdout.replace("\n", ""))
+
+
+def get_pkg_names():
+    try:
+        output = run(
+            ["./utils/package-utils/macos-names", ""],
+            text=True,
+            stdout=PIPE,
+            stderr=PIPE
+        )
+    except FileNotFoundError:
+        output = run(
+            ["./package-utils/macos-names", ""],
+            text=True,
+            stdout=PIPE,
+            stderr=PIPE
+        )
+        raw_pkgs = output.stdout
+        pkg_list = raw_pkgs.split("\n")
+        pkg_list = pkg_list[ :-1]
+        final_pkgs = ""
+        for pkg in pkg_list:
+            if pkg == pkg_list[-1]:
+                final_pkgs += pkg
+            else:
+                final_pkgs += f"{pkg}, "
+        print(final_pkgs)
+    else:
+        raw_pkgs = output.stdout
+        pkg_list = raw_pkgs.split("\n")
+        pkg_list = pkg_list[ :-1]
+        final_pkgs = ""
+        for pkg in pkg_list:
+            if pkg == pkg_list[-1]:
+                final_pkgs += pkg
+            else:
+                final_pkgs += f"{pkg}, "
+        print(final_pkgs)
+
+if __name__ == "__main__":
+    try:
+        arg_a = argv[1]
+    except IndexError:
+        get_pkgs()
+    else:
+        if argv[1] == "--names":
+            get_pkg_names()
+        else:
+            get_pkgs()
