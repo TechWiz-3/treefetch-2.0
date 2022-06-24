@@ -58,6 +58,9 @@ def get_os(use_env = False):
         elif os_type == "Linux":
             op_sys = get_linux_os_name()
             op_ver = uname().release
+            return "success", op_sys, op_ver
+        # else
+        return "error", "os not recognised, please open an issue :)"
 
 def get_linux_os_name():
     # copied from pythonfetch
