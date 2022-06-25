@@ -39,7 +39,7 @@ def get_wm(use_env = False):
                 return wm
             return "quartz compositor"  # default mac wm
         elif os == "Windows":
-            wms = []
+            wms = ["explorer"]
         elif os == "Linux":
             wms = [
                 "arcan", "asc",
@@ -58,8 +58,22 @@ def get_wm(use_env = False):
                 "westeros", "westford",
                 "weston", "sowm",
                 "catwm", "fvwm",
-                "dwm", "2bwm"
+                "dwm", "2bwm",
+                "monsterwm", "tinywm",
+                "x11fs", "xmonad",
+                "e16", "sawfish",
+                "cinnamon", "muffin",
+                "compiz", "mutter", "gala",
+                "metacity"
+                "e17", "enlightenment",
+                "fluxbox", "icewm",
+                "openbox", "pekwm",
+                "kwin", "blackbox", "bblean"
             ]
+            wm = get_processes(wms)
+            if wm in wms:
+                return wm
+            return "wm not found please submit an issue"
 
 
 def get_processes(known_managers):
