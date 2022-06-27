@@ -10,8 +10,10 @@
 
 from platform import system
 import psutil
+from sys import argv
 
-def get_wm(use_env = False):
+
+def get_wm(use_env=False):
     """Returns the WM or an error"""
     if use_env:  # look for a WM env variable
         from os import environ
@@ -90,4 +92,10 @@ def get_processes(known_managers):
 
 
 if __name__ == "__main__":
-    print(get_wm(use_env = True))
+    try:
+        second_arg = argv[1]
+    except IndexError:
+        print(get_wm(use_env=False))
+    else:
+        if second_arg in ("--use-env", "--env"):
+            print(get_wm(use_env=True))
