@@ -26,3 +26,7 @@ Useful links:
 
 ## :monocle_face: Origin
 This project is a different implementation of another project with similar output, this project is named [tfetch](https://github.com/Endlassy/tfetch). This project is NOT related to the [treefetch](https://github.com/angelofallars/treefetch) project, which is in written in rust and displays physical ascii trees (check it out tho, it's pretty cool).
+
+---
+### 🎉 Commit labels
+If you're interested in the commit labels used in this repo, check out my [git emoji](https://github.com/TechWiz-3/git-commit-emojis) project
