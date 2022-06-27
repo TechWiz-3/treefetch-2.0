@@ -13,10 +13,13 @@ Useful links:
 - [desktop related env variables](https://superuser.com/questions/1074068/what-is-the-difference-between-desktop-session-xdg-session-desktop-and-xdg-cur)
 - [getting desktop env discussion](https://unix.stackexchange.com/questions/116539/how-to-detect-the-desktop-environment-in-a-bash-script)
 
-[**`get_wm`**](./utils_get_wm)
+[**`get_wm`**](./utils/get_wm)
 * Review code and PR any logic issues or any improvements
 * Test on your system/s and submit an issue if something is wrong
 * Review window managers list for each platform (win, mac, linux)
+
+[**`package-utils`**](./utils/package-utils)
+* Review the available scripts and PR or open an issue if you would like to add other platforms/package managers
 
 Useful links:
 * [neofetch `get_wm`](https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L1892) and [`get_wm_theme`](https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L2024)
