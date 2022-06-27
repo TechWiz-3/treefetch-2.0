@@ -23,6 +23,10 @@ B="\033[38;5;33m"
 A="\033[30m"
 B="\033[35m"
 
+A="\033[32m"
+B="\033[34m"
+
+
 os=$(./utils/get_os | awk 'NR==1 {print $2 " " $3 " " $4}')
 os_ver=$(./utils/get_os | awk 'NR==2 {print $2 " " $3 " " $4}')
 
@@ -32,6 +36,10 @@ pkgs=$(./utils/get_packages)
 if [ -z "$DE"]
 then
     de=$(./utils/get_desktop)
+    if [[ "$de" == "XDG_CURRENT_DESKTOP env not found" || "$DE" == "de not recognised" ]]
+    then
+        ignore_de=true
+    fi
 else
     de="${DE}"
 fi
@@ -39,12 +47,32 @@ fi
 if [ -z "$WM" ]
 then
     wm=$(./utils/get_wm)
+    if [[ "$wm" = "wm not found please submit an issue" || $"WM" == "error, no env variable with name wm, WM, WINDOW_MANAGER or window_manager found" ]]
+    then
+        ignore_wm="true"
+    fi
 else
     wm="${WM}"
 fi
 
-# tree structure copied from tfetch
-echo -e """.
+
+if [[ "$ignore_de" == "true" && "$ignore_wm" == "true" ]]
+then
+	# tree structure copied from tfetch
+	echo -e """.
+${RESET}├─ ${BOLD}${A}distro${RESET}
+${RESET}│  ├─ ${B}${os}${RESET}
+${RESET}│  └─ ${B}${os_ver}${RESET}
+${RESET}├─ ${BOLD}${A}packages${RESET}
+${RESET}│  └─ ${B}all${RESET}
+${RESET}│     └─ ${B}${pkgs}${RESET}
+${RESET}└─ ${BOLD}${A}shell${RESET}
+${RESET}   └─ ${B}${SHELL##*/}${RESET}
+"""
+
+else
+	# tree structure copied from tfetch
+	echo -e """.
 ${RESET}├─ ${BOLD}${A}distro${RESET}
 ${RESET}│  ├─ ${B}${os}${RESET}
 ${RESET}│  └─ ${B}${os_ver}${RESET}
@@ -59,3 +87,4 @@ ${RESET}│     └─ ${B}${wm}${RESET}
 ${RESET}└─ ${BOLD}${A}shell${RESET}
 ${RESET}   └─ ${B}${SHELL##*/}${RESET}
 """
+fi
