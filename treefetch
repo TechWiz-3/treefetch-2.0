@@ -2,9 +2,26 @@
 
 RESET="\033[0;m"
 BOLD="\033[1;m"
+BOLD=""
 
 A="\033[32m"
 B="\033[32m"
+
+A="\033[38;5;200m"
+B="\033[38;5;206m"
+
+A="\033[38;5;92m"
+B="\033[38;5;89m"
+
+A="\033[38;5;100m"
+B="\033[38;5;243m"
+
+
+A="\033[38;5;160m"
+B="\033[38;5;33m"
+
+A="\033[30m"
+B="\033[35m"
 
 os=$(./utils/get_os | awk 'NR==1 {print $2 " " $3 " " $4}')
 os_ver=$(./utils/get_os | awk 'NR==2 {print $2 " " $3 " " $4}')
@@ -12,11 +29,18 @@ os_ver=$(./utils/get_os | awk 'NR==2 {print $2 " " $3 " " $4}')
 pkgs=$(./utils/get_packages)
 #pkg_names=$(./utils/get_packages --names)
 
-if [ $DE -z ]
+if [ -z "$DE"]
 then
     de=$(./utils/get_desktop)
 else
     de="${DE}"
+fi
+
+if [ -z "$WM" ]
+then
+    wm=$(./utils/get_wm)
+else
+    wm="${WM}"
 fi
 
 # tree structure copied from tfetch
@@ -31,7 +55,7 @@ ${RESET}├─ ${BOLD}${A}env${RESET}
 ${RESET}│  ├─ ${BOLD}${B}de${RESET}
 ${RESET}│  │  └─ ${B}${de}${RESET}
 ${RESET}│  └─ ${BOLD}${B}wm${RESET}
-${RESET}│     └─ ${B}{wm}${RESET}
+${RESET}│     └─ ${B}${wm}${RESET}
 ${RESET}└─ ${BOLD}${A}shell${RESET}
 ${RESET}   └─ ${B}${SHELL##*/}${RESET}
 """
