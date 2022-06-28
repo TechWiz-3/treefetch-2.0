@@ -1,0 +1,8 @@
+#!/bin/bash
+
+case "$1" in
+	*centos*)
+		rpm -qa | wc -l
+	;;
+esac
+
