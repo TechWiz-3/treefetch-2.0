@@ -17,6 +17,10 @@ def get_pkgs():
 
     if os_type == "Darwin":
         # package managers: brew, port
+        # need to add pkgn and dpkg - if you would like to contribute
+        # the files are https://github.com/TechWiz-3/treefetch-2.0/blob/main/utils/package-utils/macos
+        # and https://github.com/TechWiz-3/treefetch-2.0/blob/main/utils/package-utils/macos-names
+
         # from the original tfetch
         try:
             output = run(
@@ -28,6 +32,28 @@ def get_pkgs():
         except FileNotFoundError:
             output = run(
                 ["./package-utils/macos", ""],
+                text=True,
+                stdout=PIPE,
+                stderr=PIPE
+            )
+            print(output.stdout.replace("\n", ""))
+        else:
+            print(output.stdout.replace("\n", ""))
+    elif os_type == "Linux":
+        # with help from neofetch
+        from distro import name
+        try:
+            output = run(
+                ["./utils/package-utils/linux", distro.name().lower()],
+                text=True,
+                stdout=PIPE,
+                stderr=PIPE
+            )
+        except FileNotFoundError:
+            # allows running from the package utils dir
+            # as well as the root dir
+            output = run(
+                ["./package-utils/linux", distro.name().lower()],
                 text=True,
                 stdout=PIPE,
                 stderr=PIPE
