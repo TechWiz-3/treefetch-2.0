@@ -44,7 +44,7 @@ def get_pkgs():
         from distro import name
         try:
             output = run(
-                ["./utils/package-utils/linux", distro.name().lower()],
+                ["./utils/package-utils/linux", name().lower()],
                 text=True,
                 stdout=PIPE,
                 stderr=PIPE
@@ -53,7 +53,7 @@ def get_pkgs():
             # allows running from the package utils dir
             # as well as the root dir
             output = run(
-                ["./package-utils/linux", distro.name().lower()],
+                ["./package-utils/linux", name().lower()],
                 text=True,
                 stdout=PIPE,
                 stderr=PIPE
