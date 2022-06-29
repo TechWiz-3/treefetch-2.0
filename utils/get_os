@@ -22,6 +22,7 @@
 from os import environ
 from os import uname
 from platform import system
+from platform import version
 from sys import argv
 from re import compile
 
