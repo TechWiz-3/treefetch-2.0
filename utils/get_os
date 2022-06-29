@@ -22,7 +22,7 @@
 from os import environ
 from os import uname
 from platform import system
-from platform import version
+from platform import version as platform_version
 from sys import argv
 from re import compile
 
@@ -48,7 +48,7 @@ def get_os(use_env = False):
         # if the host os is windows
         if os_type == "Windows":
             op_sys = "windows"
-            op_ver = version()
+            op_ver = platform_version()
             return "success", op_sys, op_ver
         # if the host os is mac
         elif os_type == "Darwin":
