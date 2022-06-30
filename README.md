@@ -2,8 +2,8 @@
 
 Treefetch currently looks like this:
 
-<img src="/screenshots/mac_one.png" height=100>  
-<img src="/screenshots/ubuntu_one.png" height=100>  
+<img src="/screenshots/mac_one.png" height=300>  
+<img src="/screenshots/ubuntu_one.png" height=300>  
 
 ## :pray: Ways you can help
 
