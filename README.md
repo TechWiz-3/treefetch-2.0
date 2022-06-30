@@ -1,3 +1,10 @@
+# Treefetch
+
+Treefetch currently looks like this:
+
+![Image](/screenshots/mac_one.png)  
+![Image](/screenshots/ubuntu_one.png)  
+
 ## :pray: Ways you can help
 
 **In general:**
