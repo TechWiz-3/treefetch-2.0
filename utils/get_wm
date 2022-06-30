@@ -31,6 +31,9 @@ def get_wm(use_env=False):
     else:
         os = system()
         if os == "Darwin":  # refers to mac os
+        # add the wms from these links
+        # https://github.com/jaywcjlove/awesome-mac#window-management
+        # https://github.com/iCHAIT/awesome-macOS#window-management
             wms = [
                 "amethyst", "spectacle",
                 "kwm", "chunkwm",
