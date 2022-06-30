@@ -2,12 +2,8 @@
 
 RESET="\033[0;m"
 c1="$(printf '%b\e[3%sm' "$RESET" 3)"
-c2="$(printf '%b\e[3%sm' "$RESET" 1)"
 c2=$(echo -e "${RESET}\033[38;5;208m")
-# \e[34m
-c3=$(echo -e "${RESET}\033[38;5;14m")
 c3=$(echo -e "${RESET}\033[38;5;215m")
-# c3=$(printf '%b\e[38;5;206m%sm')
 
 os=$(./utils/get_os | awk 'NR==1 {print $2 " " $3 " " $4}')
 os_ver=$(./utils/get_os | awk 'NR==2 {print $2 " " $3 " " $4}')
@@ -42,14 +38,14 @@ if [[ "$ignore_de" == "true" && "$ignore_wm" == "true" ]]
 then
 	# tree structure copied from tfetch
 	echo -e ".
-${RESET}├─ ${BOLD}${A}distro${RESET}
-${RESET}│  ├─ ${B}${os}${RESET}
-${RESET}│  └─ ${B}${os_ver}${RESET}
-${RESET}├─ ${BOLD}${A}packages${RESET}
-${RESET}│  └─ ${B}all${RESET}
-${RESET}│     └─ ${B}${pkgs}${RESET}
-${RESET}└─ ${BOLD}${A}shell${RESET}
-${RESET}   └─ ${B}${SHELL##*/}${RESET}
+├─ ${c1}distro${RESET}
+│  ├─ ${c3}${os}${RESET}
+│  └─ ${c3}${os_ver}${RESET}
+├─ ${c1}packages${RESET}
+│  └─ ${c2}all${RESET}
+│     └─ ${c3}${pkgs}${RESET}
+└─ ${c1}shell${RESET}
+   └─ ${c3}${SHELL##*/}${RESET}
 "
 
 else
