@@ -5,13 +5,14 @@ used_managers=()
 
 for manager in "${mac_os_managers[@]}"
 do
-    if [ -n $(command -v ${manager} &> /dev/null) ]
+    command -v "${manager}" &> /dev/null
+    if [ $? -eq 0 ]
     then
-        used_managers+=" ${manager}"
+	used_managers+=("${manager}")
     fi
 done
 
-for manager in ${used_managers[@]}
+for manager in "${used_managers[@]}"
 do
      echo "$manager"
 done
