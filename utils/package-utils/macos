@@ -3,7 +3,7 @@
 # add dpkg and pkgin
 
 # check homebrew
-if [ -n "$(command -v brew &> /dev/null)" ]
+if [ $(command -v brew) ]
 then
     brew_pkgs=$(($(brew list | wc -l | xargs) - 4))
     #echo $brew_pkgs
@@ -12,7 +12,7 @@ else
 fi
 
 # check mac ports
-if [ -n "$(command -v port &> /dev/null)" ]
+if [ $(command -v port) ]
 then
     port_pkgs=$(($(port installed 2> /dev/null | wc -l | xargs)))
     #echo $port_pkgs
