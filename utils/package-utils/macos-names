@@ -1,12 +1,12 @@
 #!/bin/bash
 
-mac_os_managers=("brew" "port")
+mac_os_managers=("brew" "port" "dpkg" "pkgin")
 used_managers=()
 
 for manager in "${mac_os_managers[@]}"
 do
     command -v "${manager}" &> /dev/null
-    if [ $? -eq 0 ]
+    if [ $(command -v "${manager}") ]
     then
 	used_managers+=("${manager}")
     fi
