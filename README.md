@@ -26,14 +26,12 @@ Useful links:
 * Review code and PR any logic issues or any improvements
 * Test on your system/s and submit an issue if something is wrong
 * Review window managers list for each platform (win, mac, linux)
-https://github.com/jaywcjlove/awesome-mac#window-management
-https://github.com/iCHAIT/awesome-macOS#window-management
 
 Useful links:
 * [neofetch `get_wm`](https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L1892) and [`get_wm_theme`](https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L2024)
 * mac os window managers
-    1. [a](https://github.com/jaywcjlove/awesome-mac#window-management)
-    2. [b](https://github.com/iCHAIT/awesome-macOS#window-management)
+    1. [awesome-mac window management](https://github.com/jaywcjlove/awesome-mac#window-management)
+    2. [awesome-macOS window managements](https://github.com/iCHAIT/awesome-macOS#window-management)
 
 [**`package-utils`**](./utils/package-utils)
 * Review the available scripts and PR or open an issue if you would like to add other platforms/package managers
