@@ -3,7 +3,7 @@
 Treefetch currently looks like this:
 
 <img src="/screenshots/mac_one.png" height=300>  
-<img src="/screenshots/ubuntu_one.png" height=300>  
+<img src="/screenshots/ubuntu_two.png" height=300>  
 
 Treefetch uses a bash script to print the tree, and python utils to get the system information. The goal is to be accurate across platforms while being concise and simple to understand.
 
