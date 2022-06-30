@@ -5,7 +5,7 @@ used_managers=()
 
 for manager in "${mac_os_managers[@]}"
 do
-    if [ $(command -v ${manager} &> /dev/null) -n ]
+    if [ -n $(command -v ${manager} &> /dev/null) ]
     then
         used_managers+=" ${manager}"
     fi
