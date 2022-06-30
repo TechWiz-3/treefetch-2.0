@@ -27,11 +27,12 @@ Useful links:
 * Test on your system/s and submit an issue if something is wrong
 * Review window managers list for each platform (win, mac, linux)
 
+Useful links:
+* [neofetch `get_wm`](https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L1892) and [`get_wm_theme`](https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L2024)
+
 [**`package-utils`**](./utils/package-utils)
 * Review the available scripts and PR or open an issue if you would like to add other platforms/package managers
 
-Useful links:
-* [neofetch `get_wm`](https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L1892) and [`get_wm_theme`](https://github.com/dylanaraps/neofetch/blob/ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f/neofetch#L2024)
 
 ## :monocle_face: Origin
 This project is a different implementation of another project with similar output, that project is named [tfetch](https://github.com/Endlassy/tfetch). This project is NOT related to the [treefetch](https://github.com/angelofallars/treefetch) project, which is in written in rust and displays physical ascii trees (check it out tho, it's pretty cool).
