@@ -4,5 +4,11 @@ case "$1" in
 	*centos*)
 		rpm -qa | wc -l
 	;;
+    *ubuntu*)
+        # dpkg method taken from neofetch
+        dpkg_pkgs=$(dpkg-query -f '.\n' -W | wc -l)
+        snap_pkgs=$(snap list | wc -l)
+        total_pkgs=$((dpkg_pkgs + snap_pkgs))
+        echo "$total_pkgs"
+    ;;
 esac
-
