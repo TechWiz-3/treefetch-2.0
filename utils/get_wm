@@ -17,7 +17,7 @@ def get_wm(use_env=False):
     """Returns the WM or an error"""
     if use_env:  # look for a WM env variable
         from os import environ
-        env_list = ["WM", "wm", "WINDOW_MANAGER", "window_manager"]
+        env_list = ["WM", "wm", "WINDOW_MANAGER", "window_manager"]        
         # look for any env variables with the above names
         for env_var_name in env_list:
             try:
@@ -73,7 +73,9 @@ def get_wm(use_env=False):
                 "e17", "enlightenment",
                 "fluxbox", "icewm",
                 "openbox", "pekwm",
-                "kwin", "blackbox", "bblean"
+                "kwin", "blackbox", "bblean",
+                "bspwm", "i3", "nimdow",
+                "leftwm", "dk"
             ]
             wm = get_processes(wms)
             if wm in wms:
