@@ -27,10 +27,10 @@ def get_de():
     elif os == "Linux":
         # returns a string with list items seperated with colons
         try:
-            desktops_env = environ["XDG_CURRENT_DESKTOP"]
+            desktops_env = environ["XDG_SESSION_DESKTOP"]
         except KeyError:
-            # this means the variable isn't set
-            return "XDG_CURRENT_DESKTOP env not found"
+            # this means the variable isn't setattr
+            return "XDG_SESSION_DESKTOP env not found"
         else:
             recognised_desktops = [
                 "gnome", "plasma",
@@ -38,7 +38,10 @@ def get_de():
                 "cinnamon", "deepin",
                 "budgie", "lxqt",
                 "lumina", "trinity",
-                "unity"
+                "unity", "lxde",
+                "ede", "cde", 
+                "pantheon", "paperde", 
+                "cutefish", "ukui"
             ]
             for desktop in recognised_desktops:
                 if desktop in desktops_env.lower():
