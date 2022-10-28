@@ -38,7 +38,10 @@ def get_de():
                 "cinnamon", "deepin",
                 "budgie", "lxqt",
                 "lumina", "trinity",
-                "unity" "lxde"
+                "unity", "lxde",
+                "ede", "cde", 
+                "pantheon", "paperde", 
+                "cutefish", "ukui"
             ]
             for desktop in recognised_desktops:
                 if desktop in desktops_env.lower():
