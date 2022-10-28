@@ -73,9 +73,18 @@ def get_wm(use_env=False):
                 "e17", "enlightenment",
                 "fluxbox", "icewm",
                 "openbox", "pekwm",
-                "kwin", "blackbox", "bblean",
-                "bspwm", "i3", "nimdow",
-                "leftwm", "dk"
+                "blackbox", "bblean",
+                "spectrwm", "qtile",
+                "awesome", "echinus",
+                "frankenwm", "stumpwm", 
+                "cwm", "twm", "notion", 
+                "ratpoison", "herbstlufwm", 
+                "larswm", "evilwm", 
+                "bspwm", "i3", "xfwm4",
+                "jwm", "ukwm", "goomwwm",
+                "berry", "windowmaker",
+                "leftwm", "nimdow", "worm",
+                "dk"
             ]
             wm = get_processes(wms)
             if wm in wms:
